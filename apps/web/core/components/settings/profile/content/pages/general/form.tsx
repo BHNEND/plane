@@ -10,7 +10,7 @@ import { Controller, useForm } from "react-hook-form";
 import { CircleUserRound } from "lucide-react";
 // plane imports
 import { useTranslation } from "@plane/i18n";
-import { Button } from "@plane/propel/button";
+import { Button } from "@makeplane/propel/components/button";
 import { TOAST_TYPE, setPromiseToast, setToast } from "@plane/propel/toast";
 import { EFileAssetType } from "@plane/types";
 import type { IUser, TUserProfile } from "@plane/types";
@@ -394,9 +394,14 @@ export const GeneralProfileSettingsForm = observer(function GeneralProfileSettin
             </div>
           </div>
           <div>
-            <Button variant="primary" type="submit" loading={isLoading}>
-              {isLoading ? t("saving") : t("save_changes")}
-            </Button>
+            <Button
+              variant="primary"
+              size="sm"
+              stretch="auto"
+              label={isLoading ? t("saving") : t("save_changes")}
+              type="submit"
+              loading={isLoading}
+            />
           </div>
         </div>
       </form>
@@ -405,9 +410,13 @@ export const GeneralProfileSettingsForm = observer(function GeneralProfileSettin
           title={t("deactivate_account")}
           description={t("deactivate_account_description")}
           control={
-            <Button variant="error-outline" onClick={() => setDeactivateAccountModal(true)}>
-              {t("deactivate_account")}
-            </Button>
+            <Button
+              variant="danger-outline"
+              size="sm"
+              stretch="auto"
+              label={t("deactivate_account")}
+              onClick={() => setDeactivateAccountModal(true)}
+            />
           }
         />
       </div>

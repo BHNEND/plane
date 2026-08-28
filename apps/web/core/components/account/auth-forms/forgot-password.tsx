@@ -12,10 +12,10 @@ import { Controller, useForm } from "react-hook-form";
 import { CircleCheck } from "lucide-react";
 // plane imports
 import { useTranslation } from "@plane/i18n";
-import { Button, getButtonStyling } from "@plane/propel/button";
+import { Button } from "@makeplane/propel/components/button";
 import { TOAST_TYPE, setToast } from "@plane/propel/toast";
 import { Input } from "@plane/ui";
-import { cn, checkEmailValidity } from "@plane/utils";
+import { checkEmailValidity } from "@plane/utils";
 // hooks
 import useTimer from "@/hooks/use-timer";
 // services
@@ -117,20 +117,26 @@ export const ForgotPasswordForm = observer(function ForgotPasswordForm() {
           )}
         </div>
         <Button
-          type="submit"
           variant="primary"
-          className="w-full"
-          size="xl"
+          size="lg"
+          stretch="full"
+          label={
+            resendTimerCode > 0
+              ? t("auth.common.resend_in", { seconds: resendTimerCode })
+              : t("auth.forgot_password.send_reset_link")
+          }
+          type="submit"
           disabled={!isValid}
           loading={isSubmitting || resendTimerCode > 0}
-        >
-          {resendTimerCode > 0
-            ? t("auth.common.resend_in", { seconds: resendTimerCode })
-            : t("auth.forgot_password.send_reset_link")}
-        </Button>
-        <Link href="/" className={cn("w-full", getButtonStyling("link", "lg"))}>
-          {t("auth.common.back_to_sign_in")}
-        </Link>
+        />
+        <Button
+          variant="ghost"
+          size="md"
+          stretch="full"
+          label={t("auth.common.back_to_sign_in")}
+          nativeButton={false}
+          render={<Link href="/" />}
+        />
       </form>
     </FormContainer>
   );

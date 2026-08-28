@@ -10,7 +10,7 @@ import { Controller, useForm } from "react-hook-form";
 // plane types
 // plane ui
 import { useTranslation } from "@plane/i18n";
-import { Button } from "@plane/propel/button";
+import { Button } from "@makeplane/propel/components/button";
 import type { TLinkEditableFields } from "@plane/types";
 import { Input, ModalCore } from "@plane/ui";
 import type { TLinkOperations } from "./use-links";
@@ -126,13 +126,15 @@ export const LinkCreateUpdateModal = observer(function LinkCreateUpdateModal(pro
           </div>
         </div>
         <div className="flex items-center justify-end gap-2 border-t-[0.5px] border-subtle px-5 py-4">
-          <Button variant="secondary" size="lg" onClick={onClose}>
-            {t("Cancel")}
-          </Button>
-          <Button variant="primary" size="lg" type="submit" loading={isSubmitting}>
-            {preloadedData?.id ? (isSubmitting ? t("updating") : t("update")) : isSubmitting ? t("adding") : t("add")}{" "}
-            {t("home.quick_links.title")}
-          </Button>
+          <Button variant="secondary" size="md" stretch="auto" label={t("Cancel")} onClick={onClose} />
+          <Button
+            variant="primary"
+            size="md"
+            stretch="auto"
+            label={`${preloadedData?.id ? (isSubmitting ? t("updating") : t("update")) : isSubmitting ? t("adding") : t("add")} ${t("home.quick_links.title")}`}
+            type="submit"
+            loading={isSubmitting}
+          />
         </div>
       </form>
     </ModalCore>

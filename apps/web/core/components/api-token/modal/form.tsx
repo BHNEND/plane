@@ -10,7 +10,7 @@ import { Controller, useForm } from "react-hook-form";
 import { Calendar } from "lucide-react";
 // types
 import { useTranslation } from "@plane/i18n";
-import { Button } from "@plane/propel/button";
+import { Button } from "@makeplane/propel/components/button";
 import { TOAST_TYPE, setToast } from "@plane/propel/toast";
 import type { IApiToken } from "@plane/types";
 // ui
@@ -251,14 +251,19 @@ export function CreateApiTokenForm(props: Props) {
           <span className="text-11">{t("workspace_settings.settings.api_tokens.never_expires")}</span>
         </div>
         <div className="flex items-center gap-2">
-          <Button variant="secondary" onClick={handleClose}>
-            {t("cancel")}
-          </Button>
-          <Button variant="primary" type="submit" loading={isSubmitting}>
-            {isSubmitting
-              ? t("workspace_settings.settings.api_tokens.generating")
-              : t("workspace_settings.settings.api_tokens.generate_token")}
-          </Button>
+          <Button variant="secondary" size="sm" stretch="auto" label={t("cancel")} onClick={handleClose} />
+          <Button
+            variant="primary"
+            size="sm"
+            stretch="auto"
+            label={
+              isSubmitting
+                ? t("workspace_settings.settings.api_tokens.generating")
+                : t("workspace_settings.settings.api_tokens.generate_token")
+            }
+            type="submit"
+            loading={isSubmitting}
+          />
         </div>
       </div>
     </form>

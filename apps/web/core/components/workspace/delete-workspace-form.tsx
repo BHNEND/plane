@@ -9,7 +9,7 @@ import { Controller, useForm } from "react-hook-form";
 import { AlertTriangle } from "lucide-react";
 // Plane Imports
 import { useTranslation } from "@plane/i18n";
-import { Button } from "@plane/propel/button";
+import { Button } from "@makeplane/propel/components/button";
 import { TOAST_TYPE, setToast } from "@plane/propel/toast";
 import type { IWorkspace } from "@plane/types";
 import { Input } from "@plane/ui";
@@ -151,12 +151,16 @@ export const DeleteWorkspaceForm = observer(function DeleteWorkspaceForm(props: 
       </div>
 
       <div className="flex justify-end gap-2">
-        <Button variant="secondary" size="lg" onClick={handleClose}>
-          {t("cancel")}
-        </Button>
-        <Button variant="error-fill" size="lg" type="submit" disabled={!canDelete} loading={isSubmitting}>
-          {isSubmitting ? t("deleting") : t("confirm")}
-        </Button>
+        <Button variant="secondary" size="md" stretch="auto" label={t("cancel")} onClick={handleClose} />
+        <Button
+          variant="danger"
+          size="md"
+          stretch="auto"
+          label={isSubmitting ? t("deleting") : t("confirm")}
+          type="submit"
+          disabled={!canDelete}
+          loading={isSubmitting}
+        />
       </div>
     </form>
   );

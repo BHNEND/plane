@@ -9,7 +9,7 @@ import { Controller, useForm } from "react-hook-form";
 // plane imports
 import { ETabIndices } from "@plane/constants";
 import { useTranslation } from "@plane/i18n";
-import { Button } from "@plane/propel/button";
+import { Button } from "@makeplane/propel/components/button";
 import type { IModule } from "@plane/types";
 // ui
 import { Input, TextArea } from "@plane/ui";
@@ -233,18 +233,31 @@ export function ModuleForm(props: Props) {
         </div>
       </div>
       <div className="flex items-center justify-end gap-2 border-t-[0.5px] border-subtle px-5 py-4">
-        <Button variant="secondary" size="lg" onClick={handleClose} tabIndex={getIndex("cancel")}>
-          {t("cancel")}
-        </Button>
-        <Button variant="primary" size="lg" type="submit" loading={isSubmitting} tabIndex={getIndex("submit")}>
-          {status
-            ? isSubmitting
-              ? t("updating")
-              : t("project_module.update_module")
-            : isSubmitting
-              ? t("creating")
-              : t("project_module.create_module")}
-        </Button>
+        <Button
+          variant="secondary"
+          size="md"
+          stretch="auto"
+          label={t("cancel")}
+          onClick={handleClose}
+          tabIndex={getIndex("cancel")}
+        />
+        <Button
+          variant="primary"
+          size="md"
+          stretch="auto"
+          label={
+            status
+              ? isSubmitting
+                ? t("updating")
+                : t("project_module.update_module")
+              : isSubmitting
+                ? t("creating")
+                : t("project_module.create_module")
+          }
+          type="submit"
+          loading={isSubmitting}
+          tabIndex={getIndex("submit")}
+        />
       </div>
     </form>
   );

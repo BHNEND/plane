@@ -7,7 +7,7 @@
 import { useParams } from "next/navigation";
 // react-hook-form
 import { Controller, useForm } from "react-hook-form";
-import { Button } from "@plane/propel/button";
+import { Button } from "@makeplane/propel/components/button";
 import type { IProject } from "@plane/types";
 // ui
 import { Input, EModalPosition, EModalWidth, ModalCore } from "@plane/ui";
@@ -123,12 +123,15 @@ export function SelectMonthModal({ type, initialValues, isOpen, handleClose, han
           </div>
         </div>
         <div className="mt-5 flex justify-end gap-2">
-          <Button variant="secondary" size="lg" onClick={onClose}>
-            Cancel
-          </Button>
-          <Button variant="primary" size="lg" type="submit" loading={isSubmitting}>
-            {isSubmitting ? "Submitting..." : "Submit"}
-          </Button>
+          <Button variant="secondary" size="md" stretch="auto" label="Cancel" onClick={onClose} />
+          <Button
+            variant="primary"
+            size="md"
+            stretch="auto"
+            label={isSubmitting ? "Submitting..." : "Submit"}
+            type="submit"
+            loading={isSubmitting}
+          />
         </div>
       </form>
     </ModalCore>

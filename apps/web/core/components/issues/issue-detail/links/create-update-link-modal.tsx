@@ -9,7 +9,7 @@ import { observer } from "mobx-react";
 import { Controller, useForm } from "react-hook-form";
 import { useTranslation } from "@plane/i18n";
 // plane types
-import { Button } from "@plane/propel/button";
+import { Button } from "@makeplane/propel/components/button";
 import type { TIssueLinkEditableFields, TIssueServiceType } from "@plane/types";
 // plane ui
 import { Input, ModalCore } from "@plane/ui";
@@ -134,11 +134,12 @@ export const IssueLinkCreateUpdateModal = observer(function IssueLinkCreateUpdat
           </div>
         </div>
         <div className="flex items-center justify-end gap-2 border-t-[0.5px] border-subtle px-5 py-4">
-          <Button variant="secondary" size="lg" onClick={onClose}>
-            {t("common.cancel")}
-          </Button>
-          <Button variant="primary" size="lg" type="submit" loading={isSubmitting}>
-            {`${
+          <Button variant="secondary" size="md" stretch="auto" label={t("common.cancel")} onClick={onClose} />
+          <Button
+            variant="primary"
+            size="md"
+            stretch="auto"
+            label={`${
               preloadedData?.id
                 ? isSubmitting
                   ? t("common.updating")
@@ -147,7 +148,9 @@ export const IssueLinkCreateUpdateModal = observer(function IssueLinkCreateUpdat
                   ? t("common.adding")
                   : t("common.add")
             } ${t("common.link")}`}
-          </Button>
+            type="submit"
+            loading={isSubmitting}
+          />
         </div>
       </form>
     </ModalCore>
