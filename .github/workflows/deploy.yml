@@ -51,6 +51,7 @@ jobs:
 
             curl --fail --silent --show-error --location "$COMPOSE_URL" --output docker-compose.yml.new
             mv docker-compose.yml.new docker-compose.yml
+            sed -i 's#CERT_ACME_CA: ${CERT_ACME_CA}#CERT_ACME_CA: ${CERT_ACME_CA:-https://acme-v02.api.letsencrypt.org/directory}#' docker-compose.yml
             sed -i '/published: ${LISTEN_HTTP_PORT:-80}/a\        host_ip: 127.0.0.1' docker-compose.yml
             sed -i '/published: ${LISTEN_HTTPS_PORT:-443}/a\        host_ip: 127.0.0.1' docker-compose.yml
 
