@@ -13,6 +13,7 @@ import { CircleCheck } from "lucide-react";
 // plane imports
 import { useTranslation } from "@plane/i18n";
 import { Button } from "@makeplane/propel/components/button";
+import { AnchorButton } from "@makeplane/propel/components/anchor-button";
 import { TOAST_TYPE, setToast } from "@plane/propel/toast";
 import { Input } from "@plane/ui";
 import { checkEmailValidity } from "@plane/utils";
@@ -129,10 +130,9 @@ export const ForgotPasswordForm = observer(function ForgotPasswordForm() {
           disabled={!isValid}
           loading={isSubmitting || resendTimerCode > 0}
         />
-        <Button
-          variant="ghost"
+        <AnchorButton
+          variant="primary"
           size="md"
-          stretch="full"
           label={t("auth.common.back_to_sign_in")}
           nativeButton={false}
           render={<Link href="/" />}
